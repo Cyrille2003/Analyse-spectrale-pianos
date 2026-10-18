@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FixedLocator, FixedFormatter, NullFormatter
 from Data_Import_and_Transformation import datas_for_pianos
 
-DT = datas_for_pianos["Erard1"][1]
+DT = datas_for_pianos["Pleyel1"][1]
 STEP = 400      # nombre d'indexs temporels skippés dans la boucle dans gen_data_for_3D.
 K = 8000        # nombre de valeurs dans le vecteur sur lequel on veut rouler la FFT. On roule de la valeur a à la valeur a+k la FFT.
 
