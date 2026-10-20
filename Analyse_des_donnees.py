@@ -3,8 +3,19 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import datetime
 now = datetime.datetime.now()
+from pathlib import Path
+
+FICHIER = Path("Export_donnees.xlsx")
+if FICHIER.exists():
+    options = {"mode": "a", "if_sheet_exists": "replace"}
+else:
+    options = {"mode": "w"}
+
+
 F_INT = [440 + 440* i for i in range(7)]
 
+
+FICHIER = Path()
 
 def cibler_donnees(frequence_d_interet:float, data):
     df = 1 / (DT * K)   
@@ -35,7 +46,7 @@ def gen_all_harmonics_graph(name: str, donn, writer):
     )
 
 
-with pd.ExcelWriter("Export_donnees.xlsx", engine="openpyxl") as writer:
+with pd.ExcelWriter("Export_donnees.xlsx", engine="openpyxl", **options) as writer:
     for name in ["Pleyel1", "Erard1", "Steinway1"]:
         donnees = gen_data_for_3D(piano_name=name)
         gen_all_harmonics_graph(name, donn=donnees, writer=writer)
